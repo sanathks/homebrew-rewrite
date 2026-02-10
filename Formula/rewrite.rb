@@ -1,24 +1,31 @@
 class Rewrite < Formula
   desc "System-wide text rewriting powered by local LLMs"
   homepage "https://github.com/sanathks/rewrite"
-  url "https://github.com/sanathks/rewrite.git", tag: "v1.0.0"
+  url "https://github.com/sanathks/rewrite/releases/download/v1.0.0/Rewrite.zip"
+  sha256 "001b8c63075d651894b47bb9aaf17afcbd23f5196919e8ae72ad8e382a358887"
+  version "1.0.0"
   license "MIT"
+
+  head "https://github.com/sanathks/rewrite.git", branch: "main"
 
   depends_on :macos
 
   def install
-    system "swift", "build", "-c", "release", "--disable-sandbox"
+    if build.head?
+      system "swift", "build", "-c", "release", "--disable-sandbox"
 
-    app = prefix/"Rewrite.app/Contents"
-    (app/"MacOS").mkpath
-    (app/"Resources").mkpath
+      app = prefix/"Rewrite.app/Contents"
+      (app/"MacOS").mkpath
+      (app/"Resources").mkpath
 
-    (app/"MacOS").install ".build/release/Rewrite"
-    app.install "Resources/Info.plist"
-    (app/"Resources").install "Resources/AppIcon.icns"
-    (app/"PkgInfo").write "APPL????"
+      (app/"MacOS").install ".build/release/Rewrite"
+      app.install "Resources/Info.plist"
+      (app/"Resources").install "Resources/AppIcon.icns"
+      (app/"PkgInfo").write "APPL????"
+    else
+      prefix.install "Rewrite.app"
+    end
 
-    # Link to ~/Applications so it appears like a normal app
     mkdir_p "#{Dir.home}/Applications"
     ln_sf "#{prefix}/Rewrite.app", "#{Dir.home}/Applications/Rewrite.app"
   end
