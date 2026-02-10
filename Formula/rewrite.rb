@@ -21,9 +21,9 @@ class Rewrite < Formula
       (app/"MacOS").install ".build/release/Rewrite"
       app.install "Resources/Info.plist"
       (app/"Resources").install "Resources/AppIcon.icns"
+      (app/"Resources").install "Resources/icon.png"
       (app/"PkgInfo").write "APPL????"
     else
-      # Homebrew strips the top-level dir from the zip, so we're inside Rewrite.app/
       app = prefix/"Rewrite.app/Contents"
       (app/"MacOS").mkpath
       (app/"Resources").mkpath
@@ -31,6 +31,7 @@ class Rewrite < Formula
       (app/"MacOS").install "Contents/MacOS/Rewrite"
       app.install "Contents/Info.plist"
       (app/"Resources").install "Contents/Resources/AppIcon.icns"
+      (app/"Resources").install "Contents/Resources/icon.png"
       (app/"PkgInfo").write "APPL????"
     end
 
