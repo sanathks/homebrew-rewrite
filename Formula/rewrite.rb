@@ -23,7 +23,15 @@ class Rewrite < Formula
       (app/"Resources").install "Resources/AppIcon.icns"
       (app/"PkgInfo").write "APPL????"
     else
-      prefix.install "Rewrite.app"
+      # Homebrew strips the top-level dir from the zip, so we're inside Rewrite.app/
+      app = prefix/"Rewrite.app/Contents"
+      (app/"MacOS").mkpath
+      (app/"Resources").mkpath
+
+      (app/"MacOS").install "Contents/MacOS/Rewrite"
+      app.install "Contents/Info.plist"
+      (app/"Resources").install "Contents/Resources/AppIcon.icns"
+      (app/"PkgInfo").write "APPL????"
     end
 
     mkdir_p "#{Dir.home}/Applications"
