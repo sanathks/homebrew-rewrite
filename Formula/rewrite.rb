@@ -1,9 +1,9 @@
 class Rewrite < Formula
   desc "System-wide text rewriting powered by local LLMs"
   homepage "https://github.com/sanathks/rewrite"
-  url "https://github.com/sanathks/rewrite/releases/download/v1.1.1/Rewrite.zip"
-  sha256 "caa8021f2d44486ac35bbfa326ebf32a21d9d032477b94eef6c67aff20cc26b0"
-  version "1.1.1"
+  url "https://github.com/sanathks/rewrite/releases/download/v1.1.2/Rewrite.zip"
+  sha256 "5a1c689b9e120acff1b246a46ab6865953591998c57295ff4430aa6ef4c41b1f"
+  version "1.1.2"
   license "MIT"
 
   head "https://github.com/sanathks/rewrite.git", branch: "main"
