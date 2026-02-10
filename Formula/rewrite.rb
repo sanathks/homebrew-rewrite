@@ -4,7 +4,6 @@ class Rewrite < Formula
   url "https://github.com/sanathks/rewrite.git", tag: "v1.0.0"
   license "MIT"
 
-  depends_on xcode: ["14.0", :build]
   depends_on :macos
 
   def install
