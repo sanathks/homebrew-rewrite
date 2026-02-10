@@ -18,15 +18,20 @@ class Rewrite < Formula
     app.install "Resources/Info.plist"
     (app/"Resources").install "Resources/AppIcon.icns"
     (app/"PkgInfo").write "APPL????"
+
+    # Link to ~/Applications so it appears like a normal app
+    mkdir_p "#{Dir.home}/Applications"
+    ln_sf "#{prefix}/Rewrite.app", "#{Dir.home}/Applications/Rewrite.app"
+  end
+
+  def post_install
+    system "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister",
+           "-f", "#{prefix}/Rewrite.app"
   end
 
   def caveats
     <<~EOS
-      Rewrite has been installed to:
-        #{prefix}/Rewrite.app
-
-      To use it, link it to your Applications folder:
-        ln -sf #{prefix}/Rewrite.app ~/Applications/Rewrite.app
+      Rewrite has been installed to ~/Applications/Rewrite.app
 
       You will need to grant Accessibility permissions on first launch.
       Requires Ollama running locally (https://ollama.com).
