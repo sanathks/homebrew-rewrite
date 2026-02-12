@@ -2,7 +2,7 @@ class Rewrite < Formula
   desc "System-wide text rewriting powered by local LLMs"
   homepage "https://github.com/sanathks/rewrite"
   url "https://github.com/sanathks/rewrite/releases/download/v1.2.1/Rewrite.zip"
-  sha256 "2436281d416518aeb9d67062aa9debd11eef67175d08a9abc8f59aca2ecb8382"
+  sha256 "d825f5472caa99027bc91d6cbefca0d8887ad5f43db67e44aea902d9e3824deb"
   version "1.2.1"
   license "MIT"
 
